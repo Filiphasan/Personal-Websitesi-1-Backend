@@ -1,0 +1,41 @@
+﻿@model MyWebsite.Models.Model.HomePageSlider
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Slider Silme</h2>
+
+<h3>Seçili slider'ı silmek istiyor musunuz?</h3>
+<div>
+    <h4 class="text-center my-4">Anasayfa Slider Bilgileri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderDescription)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Geriye Dön", "Index",new { },new { @class="btn btn-default"})
+        </div>
+    }
+</div>

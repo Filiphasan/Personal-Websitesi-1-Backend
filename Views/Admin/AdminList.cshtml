@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MyWebsite.Models.Model.Admin>
+
+@{
+    ViewBag.Title = "AdminList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mb-5">Yöneticiler</h2>
+
+<table class="table table-responsive-lg">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Eposta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecurityQuestion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SQAnswer)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eposta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecurityQuestion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SQAnswer)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Id },new { @class="btn btn-info w-100" })
+        </td>
+    </tr>
+}
+
+</table>

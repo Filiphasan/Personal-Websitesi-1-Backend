@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MyWebsite.Models.Model.HomePageSlider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mb-5">Anasayfa Slider</h2>
+
+<p>
+    @Html.ActionLink("Yeni Slider Ekle", "Create",new { },new { @class="btn btn-primary"})
+</p>
+<table class="table table-bordered table-responsive-lg">
+    <tr class="active">
+        <th>
+            @Html.DisplayNameFor(model => model.SliderTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SliderDescription)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.SliderTitle)
+    </td>
+    <td>
+        @item.SliderDescription.Substring(0, 100).ToString()
+    </td>
+    <td>
+        @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) |
+        @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-default" }) |
+        @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+    </td>
+</tr>
+}
+
+</table>

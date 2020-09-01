@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MyWebsite.Models.Model.Skills>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mb-4" >Yetenekler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Yetenek Ekle", "Create",new { },new { @class="btn btn-primary"})
+</p>
+<table class="table table-striped table-responsive-lg">
+    <tr class="active">
+        <th>
+            @Html.DisplayNameFor(model => model.Skill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PercentageValue)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PercentageValue)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Id },new { @class="btn btn-info"}) | 
+            @Html.ActionLink("Sil", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

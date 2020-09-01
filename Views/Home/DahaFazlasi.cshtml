@@ -1,0 +1,31 @@
+﻿@model MyWebsite.Models.Model.HomePageSlider
+@{
+    ViewBag.Title = "DahaFazlasi";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<style>
+    #more .cerceve {
+        margin-top: 7%;
+        margin-bottom: 300px;
+        background-color: #76ead7;
+        color: #1a1a2e;
+        border: #1a1a2e solid 8px;
+        border-radius: 15px;
+    }
+    #more .aciklama {
+        padding: 50px 50px 100px 50px;
+        font-size: 1.5rem;
+    }
+</style>
+
+<!--More Start-->
+<section id="more">
+    <div class="cerceve text-center">
+        <h1 class="display-4 font-weight-bold py-5">@Model.SliderTitle.ToUpper()</h1>
+        <div class="aciklama">
+            @Model.SliderDescription
+        </div>
+    </div>
+</section>
+<!--More Start-->

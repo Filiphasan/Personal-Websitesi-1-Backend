@@ -1,0 +1,13 @@
+﻿<div class="col-12 mb-5 search py-3">
+    @using (Html.BeginForm("BlogGonderileri", "Home", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-8">
+                <input type="text" name="arama" class="form-control" placeholder="Ara..." required>
+            </div>
+            <div class="col-4">
+                <button class="btn" type="submit"><i class="fas fa-search"></i>Ara</button>
+            </div>
+        </div>
+    }
+</div>

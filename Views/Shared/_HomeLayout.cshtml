@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    @{ 
+        Html.RenderAction("PartialMetaTag", "Home");
+    }
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="/Content/MyWebSite/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/Content/MyWebSite/css/bootstrap.css">
+    <link href="~/Content/MyWebSite/css/style.css" rel="stylesheet" type="text/css"/>
+    <!--FONT FAMİLY-->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid top-colored">
+        <div class="row">
+            <div class="col-2 renk1"></div>
+            <div class="col-2 renk2"></div>
+            <div class="col-2 renk3"></div>
+            <div class="col-2 renk4"></div>
+            <div class="col-2 renk5"></div>
+            <div class="col-2 renk6"></div>
+        </div>
+    </div>
+    @{
+        Html.RenderAction("PartialHeaderView", "Home");
+    }
+    <!--Content Start-->
+    @RenderBody()
+    <!--Content End-->
+    <!--Footer Start-->
+    @{
+        Html.RenderAction("PartialFooterView", "Home");
+    }
+    <!--Footer End-->
+    <!--SCRİPTS-->
+    <script type="text/JavaScript" src="/Content/MyWebSite/js/jquery.js"></script>
+    <script type="text/JavaScript" src="/Content/MyWebSite/js/bootstrap.js"></script>
+    <script type="text/JavaScript" src="/Content/MyWebSite/js/popermin.js"></script>
+    <script type="text/JavaScript" src="/Content/MyWebSite/js/wow.js"></script>
+</body>
+
+</html>

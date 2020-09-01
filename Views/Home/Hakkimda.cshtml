@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Hakkimda";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<section id="about">
+    <div class="cerceve">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-4 font-weight-bold">HAKKIMDA</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-5 p-5">
+                <img src="@ViewBag.about.ResimUrl" class="img-fluid" alt="@ViewBag.about.Name @ViewBag.about.Surname @ViewBag.about.MyJob ">
+            </div>
+            <div class="col-lg-6 aboutInfo ml-auto py-5 ">
+                <h4 class="p-0 m-0">Merhaba Ben</h4>
+                <h1 class="font-weight-bold isim">@ViewBag.about.Name @ViewBag.about.Surname</h1>
+                <h1 class="pt-2 pb-4">@Html.Raw(ViewBag.about.MyJobFA) @ViewBag.about.MyJob</h1>
+                <h4 class="py-2"><i class="fas fa-birthday-cake pr-2"></i> @ViewBag.about.BirthDate.ToString("dd.MM.yyyy")</h4>
+                <h4 class="py-2"><i class="fas fa-phone-alt pr-2"></i> @ViewBag.contactInfo.PhoneNumber</h4>
+                <h4 class="py-2">
+                    <i class="far fa-envelope pr-2"></i> <a href="mailto:@ViewBag.contactInfo.Mail">@ViewBag.contactInfo.Mail</a>
+                </h4>
+                <h4 class="py-2"><i class="fas fa-home pr-2"></i> @ViewBag.contactInfo.ShortAdress</h4>
+                <a href="@ViewBag.about.MyCV" title="özgeçmiş" download class="btn mt-2 downloadCV">
+                    <h4><i class="far fa-id-card"></i> Özgeçmişime Göz Atın</h4>
+                </a>
+                <ul class="list-inline pt-5">
+                    <li class="list-inline-item">
+                        <a href="@ViewBag.socialMediaAccounts.Facebook" title="@ViewBag.socialMediaAccounts.Facebook" class="pr-2">
+                            <i class="fab fa-facebook-square fa-3x"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="@ViewBag.socialMediaAccounts.Twitter" title="@ViewBag.socialMediaAccounts.Twitter" class="px-2">
+                            <i class="fab fa-twitter-square fa-3x"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="@ViewBag.socialMediaAccounts.Linkedin" title="@ViewBag.socialMediaAccounts.Linkedin" class="px-2">
+                            <i class="fab fa-linkedin fa-3x"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="@ViewBag.socialMediaAccounts.Github" title="@ViewBag.socialMediaAccounts.Github" class="px-2"><i class="fab fa-github fa-3x"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="@ViewBag.socialMediaAccounts.Youtube" title="@ViewBag.socialMediaAccounts.Youtube" class="pl-2">
+                            <i class="fab fa-youtube fa-3x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="row pb-5">
+            <div class="col-lg-12 text-center px-5" id="ozet">
+                <h2 class="font-weight-bold pt-5"><i class="fas fa-comment-alt"></i> ÖZET</h2>
+                <p class="font-weight-bold pt-3">
+                    @Html.Raw(ViewBag.summary.Description)
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6 mx-auto pt-5 text-center" id="skills">
+                <h2 class="font-weight-bold"><i class="fas fa-chart-pie"></i> YETENEKLERİM</h2>
+                @foreach (var item in ViewBag.skills)
+                {
+                    <div class="skill py-3">
+                        <h4 class="py-2 text-left">@item.Skill</h4>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                 aria-valuenow="@item.PercentageValue" aria-valuemin="0" aria-valuemax="100" style="width:@item.PercentageValue%">
+                                %@item.PercentageValue
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <hr>
+        <div class="row text-center py-5">
+            <div class="col-lg-6" id="deneyimler">
+                <h2 class="pb-4">DENEYİMLER</h2>
+                @foreach (var item in ViewBag.experiences)
+                {
+                    <div class="deneyim col-12 text-left px-3">
+                        <h4 class="font-weight-bold pl-2">@item.Experience</h4>
+                        <h5><i class="fas fa-map-marker-alt"></i> @item.Workplace</h5>
+                        <h5><i class="fas fa-calendar-alt"></i> @item.Duration</h5>
+                        <p>
+                            @item.Description
+                        </p>
+                    </div>
+                    <hr>
+                }
+            </div>
+            <div class="col-lg-6" id="egitimler">
+                <h2 class="pb-4">EĞİTİM</h2>
+                @foreach (var item in ViewBag.educations)
+                {
+                    <div class="egitim col-12 text-left px-3">
+                        <h4 class="font-weight-bold pl-2">@item.Education</h4>
+                        <h5><i class="fas fa-school"></i> @item.School</h5>
+                        <h5><i class="fas fa-calendar-alt"></i> @item.Duration</h5>
+                        <h5><i class="fas fa-user-graduate"></i> @item.Avarage</h5>
+                        <p>
+                            @item.Description
+                        </p>
+                    </div>
+                    <hr>
+                }
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6 mx-auto interested pb-5">
+                <h2 class="text-center pt-4 pb-5">İLGİ ALANLARIM</h2>
+                @foreach (var item in ViewBag.interested)
+                {
+                    <p><i class="fas fa-check-circle"></i> @item.Interested</p>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+

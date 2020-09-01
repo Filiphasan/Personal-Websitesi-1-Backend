@@ -1,0 +1,23 @@
+﻿@model MyWebsite.Models.Model.Blogs
+@{
+    ViewBag.Title = "AddImage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-8">
+    <h2 class="text-center mb-5">@ViewBag.blogTitle Blog Resim Ekleme Ekranı</h2>
+    @using (Html.BeginForm("AddImage", "Blogs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <label class="control-label col-lg-4 text-right">Lütfen Resim Seçin</label>
+        <div class="col-lg-8">
+            <input class="form-control-file" type="file" name="image"/>
+        </div>
+        <div class="offset-lg-4 col-lg-8">
+            <input class="btn btn-primary" type="submit" value="Resmi Kaydet" />
+        </div>
+    }
+</div>
+
+

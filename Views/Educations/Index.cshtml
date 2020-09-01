@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MyWebsite.Models.Model.Educations>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mb-5">Eğitim Bilgilerim</h2>
+
+<p>
+    @Html.ActionLink("Yeni Eğitim Bilgisi Ekle", "Create",new { },new { @class="btn btn-primary"})
+</p>
+<table class="table table-bordered table-responsive-lg">
+    <tr class="active">
+        <th>
+            @Html.DisplayNameFor(model => model.Education)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.School)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avarage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Education)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.School)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Avarage)
+        </td>
+        <td>
+            @item.Description.Substring(0,40).ToString()
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Id },new { @class="btn btn-info"}) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.Id }, new { @class = "btn btn-default" }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,53 @@
+﻿@model MyWebsite.Models.Model.Comments
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yorum Detayları</h2>
+
+<div>
+    <h4 class="text-center my-4">Yorum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sil", "Delete", new { id = Model.Id },new { @class="btn btn-danger" }) |
+    @Html.ActionLink("Geriye Dön", "Index",new { },new { @class="btn btn-secondary" })
+</p>

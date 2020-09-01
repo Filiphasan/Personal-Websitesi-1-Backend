@@ -1,0 +1,38 @@
+﻿@model MyWebsite.Models.Model.Messages
+@{
+    ViewBag.Title = "AskMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mb-5">Mesaj Cevaplama Bölümü</h2>
+
+<div class="col-lg-8 offset-lg-1">
+    <form class="form-horizontal" method="post" action="/Messages/AskMessage">
+
+        @Html.HiddenFor(x => x.Id)
+        <div class="form-group">
+            <label class="control-label col-lg-3">Alıcı Mail</label>
+            <div class="col-lg-9">
+                <input class="form-control" value="@Model.Mail" name="recipintMail" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-3">Konu</label>
+            <div class="col-lg-9">
+                <input class="form-control" value="@Model.Subject-Cevap-Hasan Erdal" name="subject" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-3">Mesaj</label>
+            <div class="col-lg-9">
+                <textarea class="form-control" name="message" rows="5" required></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-9 offset-lg-3 text-center">
+                <button class="btn btn-success w-50">Mesajı Cevapla</button>
+            </div>
+        </div>
+
+    </form>
+</div>

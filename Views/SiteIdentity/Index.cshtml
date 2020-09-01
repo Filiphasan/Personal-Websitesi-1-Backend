@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MyWebsite.Models.Model.SiteIdentity>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center pb-5">Site Kimlik Bilgileri</h2>
+
+<table class="table table-bordered table-responsive-lg" >
+    <tr class="active">
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Keywords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogoFA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogoTitle)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) 
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keywords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td style="font-size:30px;">
+            @Html.Raw(item.LogoFA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LogoTitle)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.Id },new { @class="btn btn-info"}) &nbsp;|&nbsp;
+            @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
+        </td>
+    </tr>
+}
+
+</table>

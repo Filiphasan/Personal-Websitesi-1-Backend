@@ -1,0 +1,75 @@
+﻿@model MyWebsite.Models.Model.About
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hakkımda Detaylı Görünüm</h2>
+
+<div>
+    <h4 class="text-center my-4">Hakkımda Bilgileri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResimUrl)
+        </dt>
+
+        <dd>
+            <img class="img-fluid" src="@Model.ResimUrl" width="500px" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MyJobFA)
+        </dt>
+
+        <dd style="font-size:40px">
+            @Html.Raw(Model.MyJobFA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MyJob)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MyJob)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MyCV)
+        </dt>
+
+        <dd>
+            <a href="@Model.MyCV" style="text-decoration:none">Özgeçmiş Dosyam</a>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Geriye Dön", "Index",new { },new { @class="btn btn-danger"})
+</p>

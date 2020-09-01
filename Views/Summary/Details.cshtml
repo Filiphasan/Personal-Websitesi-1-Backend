@@ -1,0 +1,27 @@
+﻿@model MyWebsite.Models.Model.Summary
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Özet Detayları</h2>
+
+<div>
+    <h4 class="text-center my-4">Özet Bilgisi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Geriye Dön", "Index",new { }, new { @class = "btn btn-danger" })
+</p>

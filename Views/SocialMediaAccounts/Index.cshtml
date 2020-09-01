@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MyWebsite.Models.Model.SocialMediaAccount>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mb-5">Sosyal Medya Bölümü</h2>
+
+<table class="table table-responsive-lg">
+    <tr>
+        <th>
+            <i class="fab fa-facebook-square"></i> @Html.DisplayNameFor(model => model.Facebook)
+        </th>
+        <th>
+            <i class="fab fa-twitter-square"></i> @Html.DisplayNameFor(model => model.Twitter)
+        </th>
+        <th>
+            <i class="fab fa-linkedin"></i> @Html.DisplayNameFor(model => model.Linkedin)
+        </th>
+        <th>
+            <i class="fab fa-github"></i> @Html.DisplayNameFor(model => model.Github)
+        </th>
+        <th>
+            <i class="fab fa-youtube"></i> @Html.DisplayNameFor(model => model.Youtube)
+        </th>
+        <th><i class="fas fa-cogs"></i> İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Facebook)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Twitter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Linkedin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Github)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Youtube)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Id },new { @class="btn btn-info"}) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.Id }, new { @class = "btn btn-secondary" })
+        </td>
+    </tr>
+}
+
+</table>

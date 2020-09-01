@@ -1,0 +1,50 @@
+﻿@using MyWebsite.Helper
+@model IEnumerable<MyWebsite.Models.Model.Blogs>
+<div class="col-12 mostRead py-4">
+    <h3 class="text-center">En Çok Okunanlar</h3>
+    <hr>
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <a href="/BlogGonderileri/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.Id" title="@item.Title">
+                <div class="col-6">
+                    <div class="carousel slide" data-ride="carousel" id="mostRead-@item.Title">
+                        <div class="carousel-inner">
+                            @{
+                                MyWebsite.Models.DataContext.PersonalWebsiteContext context = new MyWebsite.Models.DataContext.PersonalWebsiteContext();
+                                IEnumerable<MyWebsite.Models.Model.BlogImages> images = context.BlogImages.Where(x => x.BlogId == item.Id).ToList();
+                                int number = 0;
+                            }
+                            @foreach (var img in images)
+                            {
+                                if (number < 1)
+                                {
+                                    <div class="carousel-item active">
+                                        <img src="@img.ImagePath" class="d-block img-fluid w-100"
+                                             alt="@item.Title Blog @item.Categories.CategoryName">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="carousel-item">
+                                        <img src="@img.ImagePath" class="d-block img-fluid w-100"
+                                             alt="@item.Title Blog @item.Categories.CategoryName">
+                                    </div>
+                                }
+                                number += 1;
+                             }
+                        </div>
+                        <a href="#mostRead-@item.Title" title="Önceki" class="carousel-control-prev" role="button"
+                           data-slide="prev"><i class="fas fa-arrow-circle-left"></i></a>
+                        <a href="#mostRead-@item.Title" title="Sonraki" class="carousel-control-next" role="button"
+                           data-slide="next"><i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 align-self-center">
+                    <h5>@item.Title</h5>
+                </div>
+            </a>
+        </div>
+        <hr>
+    }
+</div>

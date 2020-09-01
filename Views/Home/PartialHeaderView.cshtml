@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MyWebsite.Models.Model.SiteIdentity>
+
+@foreach (var item in Model)
+{
+    <header>
+        <div class="cerceve">
+            <!--NAVBAR-->
+            <nav class="navbar navbar-expand-lg navbar-dark py-3">
+                <a href="/Anasayfa" title="Hasan Erdal" class="navbar-brand">@Html.Raw(item.LogoFA) @item.LogoTitle</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav ml-auto pr-5">
+                        <li class="nav-item">
+                            <a href="/Anasayfa" class="nav-link px-3 active" title="Anasayfa"><i class="fas fa-house-user"></i> Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Hakkimda" class="nav-link px-3 active" title="Hakkımda"><i class="fas fa-comment-dots"></i> Hakkımda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/BlogGonderileri" class="nav-link px-3 active" title="Blog"><i class="far fa-images"></i> Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/iletisim" class="nav-link px-3 active" title="iletişim"><i class="fas fa-phone-square-alt"></i> İletişim</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+}

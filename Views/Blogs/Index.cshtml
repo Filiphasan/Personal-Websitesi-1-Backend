@@ -1,0 +1,97 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using MyWebsite.Models.Model
+@model IPagedList<Blogs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-5 text-center">Bloglar Bölümü</h2>
+
+<p>
+    @Html.ActionLink("Yeni Blog Ekle", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-responsive-lg">
+    <tr class="active">
+        <th>
+            Başlık
+        </th>
+        <th>
+            Açıklama
+        </th>
+        <th>
+            Kategori
+        </th>
+        <th>
+            Okunma Sayısı
+        </th>
+        <th>
+            Resimler
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.Raw(item.Description.Substring(0, 100).ToString())
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categories.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReadCount)
+            </td>
+            <td width="25%">
+                @{MyWebsite.Models.DataContext.PersonalWebsiteContext context = new MyWebsite.Models.DataContext.PersonalWebsiteContext();
+                    IEnumerable<MyWebsite.Models.Model.BlogImages> ımages = context.BlogImages.Where(x => x.BlogId == item.Id).ToList();
+                    int number = 0;
+
+                    <div class="carousel slide" data-ride="carousel" id="@item.Title">
+                        <div class="carousel-inner">
+                            @foreach (var a in ımages)
+                            {
+                                if (number < 1)
+                                {
+                                    <div class="carousel-item active">
+                                        <img class="d-block img-fluid w-100" src="@a.ImagePath" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="carousel-item">
+                                        <img class="d-block img-fluid w-100" src="@a.ImagePath" />
+                                    </div>
+                                }
+                                number = number + 1;
+                            }
+                        </div>
+                        <a href="#@item.Title" class="carousel-control-prev" role="button" data-slide="prev">
+                            <i class="fas fa-arrow-circle-left"></i>
+                        </a>
+                        <a href="#@item.Title" class="carousel-control-next" role="button" data-slide="next">
+                            <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-info my-2" }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-secondary my-2" }) |
+                @Html.ActionLink("Resim Ekle", "AddImage", new { id = item.Id }, new { @class = "btn btn-success my-2" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger my-2" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model,sayfa=>Url.Action("",new { sayfa}),PagedListRenderOptions.ClassicPlusFirstAndLast)
+
+<script type="text/JavaScript" src="/Content/MyWebSite/js/jquery.js"></script>
+<script type="text/JavaScript" src="/Content/MyWebSite/js/bootstrap.js"></script>

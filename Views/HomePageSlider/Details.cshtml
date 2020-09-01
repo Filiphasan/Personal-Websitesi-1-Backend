@@ -1,0 +1,35 @@
+﻿@model MyWebsite.Models.Model.HomePageSlider
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Slider Detayları</h2>
+
+<div>
+    <h4 class="text-center my-4">Anasayfa Slider Bilgileri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Geriye Dön", "Index",new { },new { @class="btn btn-danger"})
+</p>

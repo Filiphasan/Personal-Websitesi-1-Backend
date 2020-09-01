@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MyWebsite.Models.Model.Summary>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mb-5">Özet Bölümü</h2>
+
+<table class="table table-bordered">
+    <tr class="active">
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw(item.Description.Substring(0,100).ToString())
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Id },new { @class="btn btn-info"}) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.Id }, new { @class = "btn btn-secondary" })
+        </td>
+    </tr>
+}
+
+</table>

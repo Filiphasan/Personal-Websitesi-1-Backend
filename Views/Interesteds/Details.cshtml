@@ -1,0 +1,27 @@
+﻿@model MyWebsite.Models.Model.Interesteds
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>İlgi & Hobi Detayları</h2>
+
+<div>
+    <h4 class="text-center my-4">İlgi & Hobi Bilgisi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Interested)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interested)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id },new { @class="btn btn-info"}) |
+    @Html.ActionLink("Geriye Dön", "Index",new { }, new { @class = "btn btn-danger" })
+</p>

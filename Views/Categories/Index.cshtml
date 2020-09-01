@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MyWebsite.Models.Model.Categories>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-5 text-center">Kategoriler Bölümü</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kategori Ekle", "Create",new { },new { @class="btn btn-primary" })
+</p>
+<table class="table table-bordered table-responsive-lg">
+    <tr class="active">
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryFA)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td style="font-size:34px;">
+            @Html.Raw(item.CategoryFA)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Id },new { @class="btn btn-info" }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

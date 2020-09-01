@@ -1,0 +1,20 @@
+﻿@using MyWebsite.Helper
+@model IEnumerable<MyWebsite.Models.Model.Categories>
+<nav class="navbar navbar-expand-lg py-lg-3 mb-5">
+    <button class="navbar-toggler mx-auto text-light" data-toggle="collapse"
+            data-target="#nvbCollapse">
+        <i class="fas fa-list-alt"></i> Kategoriler
+    </button>
+    <div class="collapse navbar-collapse" id="nvbCollapse">
+        <ul class="nav nav-tabs">
+            @foreach (var item in Model)
+            {
+                <li class="nav-item w-100 py-2">
+                    <a href="/BlogGonderileri/@SeoHelper.ToSeoUrl(item.CategoryName).ToLower()/id=@item.Id" title="@item.CategoryName" class="nav-link">
+                        @Html.Raw(item.CategoryFA) @item.CategoryName
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>

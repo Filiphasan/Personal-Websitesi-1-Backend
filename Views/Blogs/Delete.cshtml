@@ -1,0 +1,100 @@
+﻿@using MyWebsite.Models.Model
+@model Blogs
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int number = 0;
+    MyWebsite.Models.DataContext.PersonalWebsiteContext context = new MyWebsite.Models.DataContext.PersonalWebsiteContext();
+    List<BlogImages> blogImages = context.BlogImages.Where(x => x.BlogId == Model.Id).ToList();
+}
+
+<h2>@ViewBag.blogTitle Blog Silme</h2>
+<h4>Seçili Blog Gönderisini silmek istiyor musunuz?</h4>
+<div class="col-lg-12">
+    <h4 class="text-center my-4">Blog Bilgileri</h4>
+    <hr />
+    <div class="row">
+        <div class="col-lg-2 font-weight-bolder text-right">
+            @Html.DisplayNameFor(model => model.Title)
+        </div>
+
+        <div class="col-lg-9">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+    </div><br />
+    <div class="row">
+        <div class="col-lg-2 font-weight-bolder text-right">
+            @Html.DisplayNameFor(model => model.Categories.CategoryName)
+        </div>
+
+        <div class="col-lg-9">
+            @Html.DisplayFor(model => model.Categories.CategoryName)
+        </div>
+    </div><br />
+    <div class="row">
+        <div class="col-lg-2 font-weight-bolder text-right">
+            @Html.DisplayNameFor(model => model.Description)
+        </div>
+
+        <div class="col-lg-9">
+            @Html.Raw(Model.Description)
+        </div>
+    </div><br />
+    <div class="row">
+        <div class="col-lg-2 font-weight-bolder text-right">
+            @Html.DisplayNameFor(model => model.ReadCount)
+        </div>
+
+        <div class="col-lg-9">
+            @Html.DisplayFor(model => model.ReadCount)
+        </div>
+    </div><br />
+    <div class="row">
+        <div class="col-lg-2 font-weight-bolder text-right">
+            Blog Resimleri
+        </div>
+
+        <div class="col-lg-9">
+            <div class="carousel slide" data-ride="carousel" id="slider1">
+                <div class="carousel-inner">
+                    @foreach (var item in blogImages)
+                    {
+                        if (number < 1)
+                        {
+                            <div class="carousel-item active">
+                                <img class="d-block img-fluid w-100" src="@item.ImagePath" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="carousel-item">
+                                <img class="d-block img-fluid w-100" src="@item.ImagePath" />
+                            </div>
+                        }
+                        number += 1;
+                    }
+                </div>
+                <a href="#slider1" class="carousel-control-prev" role="button" data-slide="prev">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </a>
+                <a href="#slider1" class="carousel-control-next" role="button" data-slide="next">
+                    <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @using (Html.BeginForm("DeleteConfirmed", "Blogs", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.HiddenFor(x => x.Id)
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-secondary" })
+        </div>
+    }
+
+</p>
